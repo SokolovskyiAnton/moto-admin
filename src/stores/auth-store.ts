@@ -11,12 +11,13 @@ export const useAuthStore = defineStore('auth', {
   },
   actions: {
     async login(payload: LoginPayload) {
-      const response = await api.post('/admin/login', payload) as { token: string }
-      localStorage.setItem('token', response.token)
+      const response = await api.post('/admin/login', payload)
+      localStorage.setItem('token', response.data.token)
       this.user = (await api.get('/user')).data as AuthDto
     },
     async logout() {
       await api.post('/logout')
+      localStorage.removeItem('token')
     }
   },
 });
