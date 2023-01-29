@@ -1,17 +1,16 @@
 import {NavigationGuardNext, RouteLocationNormalized} from 'vue-router';
 import { isExpiredJWTToken } from 'src/helpers/jwtUtils';
-import {Cookies} from 'quasar';
 
 
 export const checkTokenExpiry = (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
-  const token = Cookies.get('jwt')
+  const token = localStorage.getItem('token')
   const requireAuth = to.matched.some(m => m.meta.auth)
 
   if (requireAuth) {
     if (token) {
       const isExpired = isExpiredJWTToken(token)
       if (isExpired) {
-        Cookies.remove('jwt')
+        localStorage.removeItem('token')
         next({ path: '/login' })
         return
       }
