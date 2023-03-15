@@ -46,6 +46,20 @@
           class="col q-mr-md"
         />
         <q-input
+          v-model="form.motor"
+          type="text"
+          label="Motor"
+          filled
+          class="col q-mr-md"
+        />
+        <q-input
+          v-model="form.battery"
+          type="text"
+          label="Battery"
+          filled
+          class="col q-mr-md"
+        />
+        <q-input
           v-model="form.mileRange"
           type="text"
           label="Mile range"
@@ -184,6 +198,8 @@ const form = reactive<Omit<ProductDto, 'id'>>({
   desktopImages: [],
   mobileImages: [],
   color: '',
+  motor: '',
+  battery: '',
   optionsTitle: '',
   options: []
 })
@@ -243,6 +259,8 @@ onMounted(async () => {
   form.price = product.price
   form.weight = product.weight
   form.oldPrice = product.oldPrice;
+  form.battery = product.battery;
+  form.motor = product.motor;
   form.subcategory = product.subcategory
   form.desktopImages = product.desktopImages;
   form.mobileImages = product.mobileImages

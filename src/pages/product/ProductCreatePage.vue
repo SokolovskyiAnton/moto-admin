@@ -46,6 +46,20 @@
           class="col q-mr-md"
         />
         <q-input
+          v-model="form.motor"
+          type="text"
+          label="Motor"
+          filled
+          class="col q-mr-md"
+        />
+        <q-input
+          v-model="form.battery"
+          type="text"
+          label="Battery"
+          filled
+          class="col q-mr-md"
+        />
+        <q-input
           v-model="form.mileRange"
           type="text"
           label="Mile range"
@@ -168,6 +182,8 @@ const form = reactive<Omit<ProductDto, 'id'>>({
   desktopImages: [],
   mobileImages: [],
   color: '',
+  motor: '',
+  battery: '',
   optionsTitle: '',
   options: []
 })

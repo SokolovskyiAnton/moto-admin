@@ -14,6 +14,8 @@ export interface ProductDto {
   isAvailable: boolean,
   weight?: number;
   speed?: number;
+  motor?: string;
+  battery?: string;
   mileRange?: number;
   subcategory: Omit<SubcategoryDto, 'products'> | null
 }
